@@ -22,14 +22,33 @@ public class Galgje {
 		return characters;
 	}
 	
-	public static void letterCheck(char[] characters) {
+	public static void letterCheck(char[] characters, boolean scannen) {
 		Scanner scanner = new Scanner(System.in);
-		char letter = scanner.next().charAt(0);
-		for(int i = 0; i < characters.length; i++) {
-			System.out.println(characters[i]);
-			if(characters[i] == letter) {
-				//Als de letter in de array zit doe .....
+		
+		int kansen = 5;
+		while (scannen) {
+			char letter = scanner.next().charAt(0);
+			boolean fout = true;
+			
+			for(int i = 0; i < characters.length; i++) {
+				System.out.println(characters[i]);
+				
+				if(characters[i] == letter && kansen != 0) {
+					fout = false;
+				}	
 			}
+			
+			if (fout == true && kansen != 0) {
+				kansen--;
+				System.out.println("U hebt nog: " + kansen + " kansen.");
+				fout = false;
+			}
+			
+			if (kansen == 0) {
+				System.out.println("hang jezelf");
+				scannen = false;
+			}
+			
 		}
 		
 	}
@@ -37,8 +56,7 @@ public class Galgje {
 	public static void main(String[] args) {
 		String woord = randomWord();
 		char[] characters = charArray(woord);
-		while(true) {
-		letterCheck(characters);
-		}
+		boolean scannen = true;
+		letterCheck(characters, scannen);
 	}
 }
