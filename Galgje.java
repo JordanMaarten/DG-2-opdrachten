@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Galgje {
 
+	// kiest één van de 30 woorden in de array.
 	public static String randomWord() {
 		Random rn = new Random();
 		int randomnumber = rn.nextInt(30);
@@ -13,8 +14,22 @@ public class Galgje {
 		return woorden[randomnumber];
 		
 	}
+	
+	// Splitst het woord in letters en zet de letters in een array.
+	public static char[] charArray(String answer) {
+		char[] characters = answer.toCharArray();
+		return characters;
+	}
+	
 	public static void main(String[] args) {
+		String answer = randomWord();
+		char[] characters = charArray(answer);
 		
+
+		for (int i = 0; i < answer.length(); i++) {
+			System.out.println(characters[i]);
+		}
+		System.out.println(answer);
 	}
 
 }
