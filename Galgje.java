@@ -1,6 +1,7 @@
 package DG2;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Galgje {
 
@@ -21,15 +22,23 @@ public class Galgje {
 		return characters;
 	}
 	
-	public static void main(String[] args) {
-		String answer = randomWord();
-		char[] characters = charArray(answer);
-		
-
-		for (int i = 0; i < answer.length(); i++) {
+	public static void letterCheck(char[] characters) {
+		Scanner scanner = new Scanner(System.in);
+		char letter = scanner.next().charAt(0);
+		for(int i = 0; i < characters.length; i++) {
 			System.out.println(characters[i]);
+			if(characters[i] == letter) {
+				//Als de letter in de array zit doe .....
+			}
 		}
-		System.out.println(answer);
+		
 	}
-
+	
+	public static void main(String[] args) {
+		String woord = randomWord();
+		char[] characters = charArray(woord);
+		while(true) {
+		letterCheck(characters);
+		}
+	}
 }
